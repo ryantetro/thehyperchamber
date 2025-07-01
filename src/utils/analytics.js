@@ -1,3 +1,5 @@
+import { track } from '@vercel/analytics'
+
 // Mobile menu functionality
 document.addEventListener('DOMContentLoaded', function() {
   const mobileMenuButton = document.getElementById('mobile-menu-button');
@@ -46,33 +48,72 @@ document.addEventListener('DOMContentLoaded', function() {
   });
 });
 
-// Analytics tracking (placeholder for future implementation)
+// Analytics tracking with Vercel Analytics integration
 export function trackEvent(eventName, eventData = {}) {
-  // This is where you would integrate with Google Analytics, Mixpanel, etc.
-  console.log('Event tracked:', eventName, eventData);
+  // Track with Vercel Analytics
+  track(eventName, eventData)
+  
+  // Also log for debugging (can be removed in production)
+  console.log('Event tracked:', eventName, eventData)
 }
 
 // Optional: Track booking button clicks for analytics without interrupting the flow
 export function initializeBookingTracking() {
   // Get all Square booking links
-  const bookingLinks = document.querySelectorAll('a[href*="book.squareup.com"]');
+  const bookingLinks = document.querySelectorAll('a[href*="book.squareup.com"]')
   
   bookingLinks.forEach(link => {
     link.addEventListener('click', function() {
       // Track the event for analytics but don't prevent the default action
-      trackEvent('booking_button_clicked', {
-        button_text: this.textContent,
-        location: this.closest('section')?.id || 'unknown',
-        href: this.href
-      });
+      trackEvent('booking_clicked', {
+        button_text: this.textContent.trim(),
+        section: this.closest('section')?.id || 'unknown',
+        page_location: window.location.pathname
+      })
       // Link proceeds normally to Square booking page
-    });
-  });
+    })
+  })
+}
+
+// Track phone number clicks
+export function initializePhoneTracking() {
+  const phoneLinks = document.querySelectorAll('a[href^="tel:"]')
+  
+  phoneLinks.forEach(link => {
+    link.addEventListener('click', function() {
+      trackEvent('phone_clicked', {
+        phone_number: this.href.replace('tel:', ''),
+        section: this.closest('section')?.id || 'unknown',
+        page_location: window.location.pathname
+      })
+    })
+  })
+}
+
+// Track section visibility for engagement insights
+export function initializeSectionTracking() {
+  const sections = document.querySelectorAll('section[id]')
+  
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        trackEvent('section_viewed', {
+          section_id: entry.target.id,
+          section_name: entry.target.querySelector('h2')?.textContent?.trim() || entry.target.id,
+          page_location: window.location.pathname
+        })
+      }
+    })
+  }, { threshold: 0.5 })
+  
+  sections.forEach(section => observer.observe(section))
 }
 
 // Initialize all functionality
 document.addEventListener('DOMContentLoaded', function() {
-  initializeBookingTracking(); // Changed from initializeBookingButtons
+  initializeBookingTracking()
+  initializePhoneTracking()
+  initializeSectionTracking()
 
   // Small delay to ensure all elements are loaded
   setTimeout(() => {
@@ -149,27 +190,30 @@ document.addEventListener('DOMContentLoaded', function() {
       console.log('Setting up event listeners...');
       
       prev.addEventListener('click', function(e) {
-        e.preventDefault();
-        console.log('Previous button clicked');
-        update3DCarousel((current - 1 + slides.length) % slides.length);
-        stopAuto();
-      });
+        e.preventDefault()
+        console.log('Previous button clicked')
+        update3DCarousel((current - 1 + slides.length) % slides.length)
+        trackEvent('testimonial_carousel_prev', { current_slide: current })
+        stopAuto()
+      })
       
       next.addEventListener('click', function(e) {
-        e.preventDefault();
-        console.log('Next button clicked');
-        update3DCarousel((current + 1) % slides.length);
-        stopAuto();
-      });
+        e.preventDefault()
+        console.log('Next button clicked')
+        update3DCarousel((current + 1) % slides.length)
+        trackEvent('testimonial_carousel_next', { current_slide: current })
+        stopAuto()
+      })
       
       dots.forEach((dot, i) => {
         dot.addEventListener('click', function(e) {
-          e.preventDefault();
-          console.log('Dot clicked:', i);
-          update3DCarousel(i);
-          stopAuto();
-        });
-      });
+          e.preventDefault()
+          console.log('Dot clicked:', i)
+          update3DCarousel(i)
+          trackEvent('testimonial_carousel_dot', { target_slide: i, current_slide: current })
+          stopAuto()
+        })
+      })
       
       // Initialize with first slide
       console.log('Initializing carousel...');
