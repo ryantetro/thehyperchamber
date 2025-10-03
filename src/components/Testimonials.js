@@ -24,10 +24,10 @@ export function Testimonials() {
                 <div class="flex items-center justify-center mb-4">
                   <span class="flex text-yellow-400 text-base">★★★★★</span>
                 </div>
-                <p class="text-gray-700 mb-6 text-center text-base leading-relaxed">"As a professional athlete, recovery is crucial. The hyperbaric oxygen therapy has cut my recovery time in half and allowed me to train harder than ever before."</p>
+                <p class="text-gray-700 mb-6 text-center text-base leading-relaxed">"After tearing my ACL, I was worried about my college athletic career. The hyperbaric oxygen therapy has been a game-changer for my recovery - I'm healing faster than expected and already progressing through rehab ahead of schedule."</p>
                 <div class="flex flex-col items-center">
-                  <div class="font-bold text-gray-900 text-base">Michael Johnson</div>
-                  <div class="text-gray-500 text-sm">Professional Athlete</div>
+                  <div class="font-bold text-gray-900 text-base">Ryan Tetro</div>
+                  <div class="text-gray-500 text-sm">College Athlete</div>
                 </div>
               </div>
             </div>
@@ -38,10 +38,10 @@ export function Testimonials() {
                 <div class="flex items-center justify-center mb-4">
                   <span class="flex text-yellow-400 text-base">★★★★★</span>
                 </div>
-                <p class="text-gray-700 mb-6 text-center text-base leading-relaxed">"I've struggled with chronic inflammation for years. After just 5 sessions, I noticed a dramatic reduction in pain and swelling."</p>
+                <p class="text-gray-700 mb-6 text-center text-base leading-relaxed">"I had a terrible swimming accident that caused severe damage to my face and nose. After going to hyperbaric oxygen therapy consistently for months, my face looks like nothing ever happened. The healing was incredible."</p>
                 <div class="flex flex-col items-center">
-                  <div class="font-bold text-gray-900 text-base">Sarah Rodriguez</div>
-                  <div class="text-gray-500 text-sm">Chronic Pain Patient</div>
+                  <div class="font-bold text-gray-900 text-base">Kyle Olson</div>
+                  <div class="text-gray-500 text-sm">High School Student</div>
                 </div>
               </div>
             </div>
@@ -52,10 +52,10 @@ export function Testimonials() {
                 <div class="flex items-center justify-center mb-4">
                   <span class="flex text-yellow-400 text-base">★★★★★</span>
                 </div>
-                <p class="text-gray-700 mb-6 text-center text-base leading-relaxed">"Hyperbaric oxygen therapy has become my secret weapon for maintaining peak mental clarity and energy levels."</p>
+                <p class="text-gray-700 mb-6 text-center text-base leading-relaxed">"I had multiple concussions that forced me to take a break from sports. After going to The Hyper Chamber, my concussion symptoms have improved dramatically and I'm back to playing sports again."</p>
                 <div class="flex flex-col items-center">
-                  <div class="font-bold text-gray-900 text-base">David Thompson</div>
-                  <div class="text-gray-500 text-sm">CEO, Tech Innovations</div>
+                  <div class="font-bold text-gray-900 text-base">Thys Wallace</div>
+                  <div class="text-gray-500 text-sm">Athlete</div>
                 </div>
               </div>
             </div>
@@ -77,7 +77,7 @@ export function Testimonials() {
         
         <!-- CTA Button -->
         <div class="flex justify-center mt-6">
-          <a href="https://book.squareup.com/appointments/bgourqv8i2d4ot/location/LET2173VFX05E/services" target="_blank" rel="noopener noreferrer" class="bg-white text-blue-600 hover:bg-blue-50 font-bold py-3 px-8 rounded-lg shadow-lg text-lg transition">Join Our Success Stories</a>
+          <a href="https://www.google.com/search?q=The+Hyper+Chamber+review" target="_blank" rel="noopener noreferrer" class="bg-white text-blue-600 hover:bg-blue-50 font-bold py-3 px-8 rounded-lg shadow-lg text-lg transition">Join Our Success Stories</a>
         </div>
       </div>
     </section>

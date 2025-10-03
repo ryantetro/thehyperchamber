@@ -5,6 +5,7 @@ import { HowItWorks } from './HowItWorks.js'
 import { ProvenResults } from './ProvenResults.js'
 import { Testimonials } from './Testimonials.js'
 import { Pricing } from './Pricing.js'
+import { Contact } from './Contact.js'
 import { Footer } from './Footer.js'
 
 export function App() {
@@ -20,9 +21,10 @@ export function App() {
         ${Hero()}
         ${Benefits()}
         ${HowItWorks()}
-        ${ProvenResults()}
-        ${Testimonials()}
         ${Pricing()}
+        ${Testimonials()}
+        ${ProvenResults()}
+        ${Contact()}
       </main>
       ${Footer()}
     </div>
